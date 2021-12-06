@@ -14,5 +14,6 @@ Functionalities of the web application:
 
 Instructions to get started : 
       1) git clone https://github.com/Hrithik-ui/cali_cafe
-      2) npm install
-      3) npm start
+      2) Change directory to cali_cafe
+      3) npm install
+      4) npm start
