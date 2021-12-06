@@ -13,7 +13,6 @@ const steps = ['Shipping address', 'Payment details'];
 const Checkout = ({cart,order,onCaptureCheckout,error,refreshCart}) => {
   const [checkoutToken, setCheckoutToken] = useState(null);
   const [activeStep, setActiveStep] = useState(0);
-  const [shippingData, setShippingData] = useState({});
   const classes = useStyles();
   const history = useHistory();
   useEffect(()=>{
@@ -32,46 +31,13 @@ const Checkout = ({cart,order,onCaptureCheckout,error,refreshCart}) => {
   const backStep=()=>setActiveStep((prevActiveStep)=>prevActiveStep-1)
 
   const next=(data)=>{
-      setShippingData(data)
       nextStep()
   }
-  //const nextStep = () => setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  //const backStep = () => setActiveStep((prevActiveStep) => prevActiveStep - 1);
+ 
 
  
-/*
-  const test = (data) => {
-    setShippingData(data);
 
-    nextStep();
-  };
 
-  let Confirmation = () => (order.customer ? (
-    <div>
-      <div>
-        <Typography variant="h5">Thank you for your purchase, {order.customer.firstname} {order.customer.lastname}!</Typography>
-        <Divider className={classes.divider} />
-        <Typography variant="subtitle2">Order ref: {order.customer_reference}</Typography>
-      </div>
-      <br />
-      <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
-    </div>
-  ) : (
-    <div className={classes.spinner}>
-      <CircularProgress />
-    </div>
-  ));
-
-  if (error) {
-    Confirmation = () => (
-      <div>
-        <Typography variant="h5">Error: {error}</Typography>
-        <br />
-        <Button component={Link} variant="outlined" type="button" to="/">Back to home</Button>
-      </div>
-    );
-  }
-*/
 const Confirmation=()=>(
     <div> 
     <h1>Your order has been Successful!</h1>
@@ -80,7 +46,7 @@ const Confirmation=()=>(
 )
   const Form = () => (activeStep === 0
     ? <AddressForm checkoutToken={checkoutToken} next={next}/>
-    : <PaymentForm checkoutToken={checkoutToken} backStep={backStep} nextStep={nextStep} shippingData={shippingData} onCaptureCheckout={onCaptureCheckout} refreshCart={refreshCart} />)
+    : <PaymentForm checkoutToken={checkoutToken} backStep={backStep} nextStep={nextStep}  onCaptureCheckout={onCaptureCheckout} refreshCart={refreshCart} />)
 
   return (
     <div>
