@@ -4,7 +4,7 @@ import {Elements,CardElement,ElementsConsumer} from "@stripe/react-stripe-js"
 import {loadStripe} from "@stripe/stripe-js"
 import Review from "./Checkout/Review"
 const stripePromise=loadStripe("pk_test_51JnzqfKgs2k41WJ6FDcRju0J6orbLr53EhYsA6c4hJsoqS0T8yPmJLHugOaSlFmRe3nwVuwFeU9YZ4iMOr5Gf18D00TFbC2zqx")
-const PaymentForm = ({checkoutToken,backStep,shippingData,onCaptureCheckout,nextStep,refreshCart}) => {
+const PaymentForm = ({checkoutToken,backStep,onCaptureCheckout,nextStep,refreshCart}) => {
     const handleSubmit = async (event, elements, stripe) => {
         event.preventDefault();
     
@@ -17,9 +17,6 @@ const PaymentForm = ({checkoutToken,backStep,shippingData,onCaptureCheckout,next
         if (error) {
             const orderData = {
                 line_items: checkoutToken.live.line_items,
-                customer: { firstname: shippingData.firstName, lastname: shippingData.lastName, email: shippingData.email },
-                shipping: { name: 'International', street: shippingData.address1, town_city: shippingData.city, county_state: shippingData.shippingSubdivision, postal_zip_code: shippingData.zip, country: shippingData.shippingCountry },
-                fulfillment: { shipping_method: shippingData.shippingOption },
                 payment: {
                   gateway: 'stripe',
                   stripe: {
@@ -34,9 +31,6 @@ const PaymentForm = ({checkoutToken,backStep,shippingData,onCaptureCheckout,next
         } else {
           const orderData = {
             line_items: checkoutToken.live.line_items,
-            customer: { firstname: shippingData.firstName, lastname: shippingData.lastName, email: shippingData.email },
-            shipping: { name: 'International', street: shippingData.address1, town_city: shippingData.city, county_state: shippingData.shippingSubdivision, postal_zip_code: shippingData.zip, country: shippingData.shippingCountry },
-            fulfillment: { shipping_method: shippingData.shippingOption },
             payment: {
               gateway: 'stripe',
               stripe: {
