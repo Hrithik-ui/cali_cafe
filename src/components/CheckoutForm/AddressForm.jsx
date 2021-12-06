@@ -7,58 +7,13 @@ import { commerce } from '../../lib/commerce';
 import CustomTextField from './CustomTextField';
 
 const AddressForm = ({checkoutToken,next}) => {
-  const [shippingCountries, setShippingCountries] = useState([])
-  const [shippingCountry, setShippingCountry] = useState('')
-  const [shippingSubdivisions, setShippingSubdivisions] = useState([])
-  const [shippingSubdivision, setShippingSubdivision] = useState('')
-  const [shippingOptions, setShippingOptions] = useState([])
-  const [shippingOption, setShippingOption] = useState('')
+  
   const methods = useForm()
-
-  const fetchShippingCountries = async (checkoutTokenId) => {
-    const { countries } = await commerce.services.localeListShippingCountries(checkoutTokenId);
-//console.log(countries)
-    setShippingCountries(countries);
-    setShippingCountry(Object.keys(countries)[0])
-    console.log(shippingCountry)
-  };
-
- const fetchSubdivisions = async (countryCode) => {
-    const { subdivisions } = await commerce.services.localeListSubdivisions(countryCode);
-
-    setShippingSubdivisions(subdivisions);
-    setShippingSubdivision(Object.keys(subdivisions)[0]);
-  };
-
-
-  const fetchShippingOptions = async (checkoutTokenId, country, stateProvince = null) => {
-    const options = await commerce.checkout.getShippingOptions(checkoutTokenId, { country, region: stateProvince });
-
-    setShippingOptions(options);
-    setShippingOption(options[0].id);
-  };
-  
-
- 
-
-  
-
-  useEffect(() => {
-    if (shippingSubdivision) fetchShippingOptions(checkoutToken.id, shippingCountry, shippingSubdivision);
-  }, [checkoutToken,shippingSubdivision,shippingCountry]);
-
-useEffect(()=>{
-    fetchShippingCountries(checkoutToken.id)
-    },[])
-    useEffect(() => {
-        if (shippingCountry) fetchSubdivisions(shippingCountry);
-      }, [shippingCountry]);
-
   return (
     <div>
       <Typography variant="h6" gutterBottom>Shipping address</Typography>
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit((data)=>next({...data,shippingCountry,shippingSubdivision,shippingOption}))}>
+        <form onSubmit={methods.handleSubmit((data)=>next({...data}))}>
           <Grid container spacing={3}>
           <CustomTextField required name="firstName" label="First Name"/>
           <CustomTextField required name="lastName" label="Last Name"/>
