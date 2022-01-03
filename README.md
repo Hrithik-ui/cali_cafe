@@ -13,7 +13,7 @@ Functionalities of the web application:
       the checkout page if the transaction is failed.
 
 Instructions to get started : 
-      1) git clone https://github.com/Hrithik-ui/cali_cafe
-      2) Change directory to cali_cafe
-      3) npm install
-      4) npm start
+      1. git clone https://github.com/Hrithik-ui/cali_cafe
+      2. Change directory to cali_cafe
+      3. npm install
+      4. npm start
