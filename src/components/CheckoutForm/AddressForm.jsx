@@ -13,7 +13,7 @@ const AddressForm = ({checkoutToken,next}) => {
     <div>
       <Typography variant="h6" gutterBottom>Shipping address</Typography>
       <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit((data)=>next({...data}))}>
+        <form onSubmit={next}>
           <Grid container spacing={3}>
           <CustomTextField required name="firstName" label="First Name"/>
           <CustomTextField required name="lastName" label="Last Name"/>
