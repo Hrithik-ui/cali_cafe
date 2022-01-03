@@ -13,12 +13,7 @@ const Cart = ({ cart, handleEmptyCart, handleUpdateCartQty, handleRemoveFromCart
 const EmptyCart=()=>(
     <Typography variant="subtitle1">You have no items in your shopping cart <Link to="/" className={classes.link}>Starting adding some</Link></Typography>
 )
-  //const renderEmptyCart = () => (
-    //<Typography variant="subtitle1">You have no items in your shopping cart,
-     // <Link className={classes.link} to="/">start adding some</Link>!
-    //</Typography>
-  //);
- 
+  
 
 
   const FilledCart = () => (
