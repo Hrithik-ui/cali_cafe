@@ -16,8 +16,8 @@ before_script:
 script:
   - docker --version # print the version for logging
   - docker build -t sample .
-  - docker tag sample rtestdocker/sample
+  - docker tag sample rtestdocker/sample:latest
 
 after_success:
-  - docker push rtestdocker/sample
+  - docker push rtestdocker/sample:latest
   - echo "operation successful"
