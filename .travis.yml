@@ -16,7 +16,7 @@ before_script:
 script:
   - docker --version # print the version for logging
   - docker build -t sample .
-  - docker tag travis rtestdocker/sample:latest
+  - docker tag travis rtestdocker/sample
 
 after_success:
   - docker push rtestdocker/sample
