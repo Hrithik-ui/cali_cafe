@@ -15,7 +15,7 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker build -t push-to-travis:v1 .
+  - docker build -t push-to-travis:v2 .
   - docker tag push-to-travis:v1 rtestdocker/travis
 
 after_success:
