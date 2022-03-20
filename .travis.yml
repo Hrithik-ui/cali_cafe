@@ -15,9 +15,9 @@ before_script:
 
 script:
   - docker --version # print the version for logging
-  - docker build -t travis .
-  - docker tag travis rtestdocker/travis:latest
+  - docker build -t sample .
+  - docker tag travis rtestdocker/sample:latest
 
 after_success:
-  - docker push rtestdocker/travis
+  - docker push rtestdocker/sample
   - echo "operation successful"
